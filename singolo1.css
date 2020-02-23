@@ -6,6 +6,10 @@ body {
 .logo {
     margin-left: 20px;
 }
+h1 {
+    font-size: 0px;
+    visibility: hidden;
+}
 ul li:not(:first-child):before {
     content: "•";
     margin-left: 10px;
