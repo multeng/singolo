@@ -110,6 +110,7 @@ ul li a:visited{
     font-size: 18px;
     font-weight: 300;
     line-height: 1.6;
+    text-align : justify;
 }
 .row-one {
     display: flex;
