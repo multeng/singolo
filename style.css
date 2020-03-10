@@ -39,7 +39,7 @@ ul li a:hover {
   color: #ea676b;
 }
 .singolo1-header {
-  padding: 25px 20px 15px;
+  padding: 29px 20px 20px;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -124,11 +124,15 @@ ul li a:hover {
   display: flex;
   height: 150px;
 }
+.row-two .text p {
+  line-height: 22px;
+  margin-top: 13px;
+}
 .row-one p {
   margin-bottom: 8px;
 }
 .service-block img {
-  margin: 5px 10px 0px 10px;
+  margin: 5px 10px 0px 11px;
 }
 .service-block img:hover {
   background-color: #767e9e;
@@ -171,6 +175,7 @@ ul li a:hover {
 .part-two {
   background-color: #f2f2f2;
   border-bottom: 5px solid #ffffff;
+  padding-bottom: 5px;
 }
 /* singolo2 */
 html {
@@ -186,8 +191,15 @@ html {
 .header-content {
   padding: 40px 0px 10px 10px;
 }
+
 .header-content p {
-  margin-bottom: 10px;
+  color: #767e9e;
+  font-size: 1.8rem;
+  font-family: "Lato", Verdana, sans-serif;
+  line-height: 1.5em;
+  font-weight: 300px;
+  overflow: hidden;
+  margin-bottom: 9px;
 }
 .tags {
   display: flex;
@@ -250,7 +262,7 @@ html {
   display: flex;
   margin-bottom: 18px;
 }
-.society {
+.society-s2 {
   width: 153px;
   display: flex;
   justify-content: space-between;
@@ -265,12 +277,12 @@ h1 {
   font-weight: 900;
   letter-spacing: none;
 }
-p {
+.about p {
   color: #767e9e;
   font-size: 1.8rem;
   font-family: "Lato", Verdana, sans-serif;
-  line-height: 1.5em;
-  font-weight: 300px;
+  line-height: 1.6em;
+  font-weight: 300;
   overflow: hidden;
 }
 .discription h2 {
@@ -311,7 +323,7 @@ p {
 .wrapper_main {
   display: flex;
 }
-h2 {
+.quote-content h2 {
   font-family: "Lato", Verdana, sans-serif;
   font-size: 30px;
   font-weight: 900;
@@ -319,7 +331,7 @@ h2 {
   text-align: left;
   margin-bottom: 19px;
 }
-h3 {
+.contact h3 {
   font-family: "Lato", Verdana, sans-serif;
   text-align: left;
   color: #f0d8d9;
@@ -345,7 +357,7 @@ h3 {
 }
 input,
 textarea {
-  margin: 12px 0px;
+  margin: 11px 0px;
   padding: 12px 15px;
   background-color: #d6564f;
   width: 619px;
@@ -364,7 +376,7 @@ textarea {
   opacity: 1;
 }
 .contact-us {
-  margin: 25px 0px 0px 11px;
+  margin: 23px 0px 0px 11px;
   display: flex;
   flex-direction: column;
 }
