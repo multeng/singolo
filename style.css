@@ -161,6 +161,7 @@ ul li a:hover {
 .text p {
   word-spacing: 3px;
   font-size: 12px;
+  text-align: justify;
 }
 .text h3 {
   font-family: "Lato", sans-serif;
@@ -227,6 +228,8 @@ html {
   line-height: 20px;
   color: #767e9e;
   margin: 8px 0px 25px 0px;
+  overflow: hidden;
+  text-align: justify;
 }
 .container {
   background: #2d2f39;
@@ -284,11 +287,13 @@ h1 {
   line-height: 1.6em;
   font-weight: 300;
   overflow: hidden;
+  text-align: justify;
 }
 .discription h2 {
   color: #666d89;
   font-size: 1.8rem;
   font-family: "Lato", Verdana, sans-serif;
+  overflow: hidden;
 }
 .society-s2 img:hover {
   background-color: #767e9e;
@@ -315,10 +320,11 @@ h1 {
   font-family: "Lato", Verdana, sans-serif;
   font-weight: lighter;
   font-size: 18px;
-  text-align: left;
   line-height: 29px;
   margin-bottom: 0px;
   letter-spacing: 0.15px;
+  overflow: hidden;
+  text-align: justify;
 }
 .wrapper_main {
   display: flex;
@@ -341,10 +347,11 @@ h1 {
 .information p {
   margin: 0px 10px;
   font-family: "Lato", Verdana, sans-serif;
-  text-align: left;
   color: #f0d8d9;
   font-size: 12px;
   line-height: 21px;
+  overflow: hidden;
+  text-align: justify;
 }
 .copyright {
   margin: 8px 0px 4px 14px;
