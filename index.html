@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -15,12 +16,12 @@
         </div>
         <h1>Singolo1</h1>
         <nav class="nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+            <ul id="menu">
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#aboutus">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         </nav>
@@ -28,30 +29,25 @@
     <main class="container-s1">
         <div class="slider">
             <div class="left-button" id="button">
-                <img src="./assets/singolo1/left.png" alt="left">
+                <img src="./assets/left.png" alt="left">
             </div>
-            <div class="phone-left-container">
-                <div class="phone-left">
-                    <img src="./assets/singolo1/iphonev.png" alt="phone">
-                </div>
-                <div class="phone-left-image">
-                    <img src="./assets/singolo1/bgh.png" alt="phone">
-                </div>
+            <div class="images-phone slide-active">
+                <img class="phone-left" src="./assets/iphonev.png" alt="">
+                <img class="phone-left-image" src="./assets/bgh.png" alt="">
+                <img class="shadow-vertical" src="./assets/Shadowvertical.png" alt="">
+                <img class="phone-right" src="./assets/iphoneg.png" alt="">
+                <img class="phone-right-image" src="./assets/bgv.png" alt="">
+                <img class="shadow-horizaontal" src="./assets/Shadowhorizontal.png" alt="">
             </div>
-            <div class="phone-right-container">
-                <div class="phone-right">
-                    <img src="./assets/singolo1/iphoneg.png" alt="phone">
-                </div>
-                <div class="phone-right-image">
-                    <img src="./assets/singolo1/bgv.png" alt="phone">
-                </div>
+            <div class="images-phone">
+                <img class="iphone2" src="./assets/images/iphone2.png" alt="">
             </div>
             <div class="right-button" id="button">
-                <img src="./assets/singolo1/right.png" alt="right">
+                <img src="./assets/right.png" alt="right">
             </div>
         </div>
         <div class="part-two">
-            <div class="services">
+            <div id="services" class="services">
                 <div class="for-services">
                     <h2>Our Services</h2>
                     <div>
@@ -134,11 +130,11 @@
     </main>
     <header class="header">
         <div class="wrapper">
-            <div class="header-content">
+            <div id="portfolio" class="header-content">
                 <h1>Portfolio</h1>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem, nec elit.</p>
                 <div class="tags">
-                    <p>All</p>
+                    <p class='active-tag'>All</p>
                     <p>Web Design</p>
                     <p>Graphic Design</p>
                     <p>Artwork</p>
@@ -163,7 +159,7 @@
         </div>
     </main>
     <div class="info">
-        <div class="wrapper info_wrapper">
+        <div id="aboutus" class="wrapper info_wrapper">
             <div class="about">
                 <h1>About Us</h1>
                 <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus,
@@ -224,7 +220,7 @@
         </div>
     </div>
     <div class="quote">
-        <div class="wrapper wrapper_quote">
+        <div id="contact" class="wrapper wrapper_quote">
             <div class="quote-content">
                 <h2>Get a Quote </h2>
                 <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus,
@@ -238,15 +234,23 @@
     <div class="main">
         <div class="wrapper wrapper_main">
             <div class="form">
-                <form method="POST">
-                    <input type="name" placeholder="Name (Required)" required autofocus>
+                <form id='form'>
+                    <input type="name" placeholder="Name (Required)" required>
                     <input type="email" placeholder="Email (Required)" required>
-                    <input type="text" placeholder="Subject">
-                    <textarea name="message" placeholder="Describe your project in detail..." cols="27"
+                    <input type="text" id="subject" placeholder="Subject">
+                    <textarea name="message" id="description" placeholder="Describe your project in detail..." cols="27"
                         rows="13"></textarea>
-                    <input class="button" type="submit" value="Submit" formmethod="POST">
+                    <input id='button-form' class="button" type="submit" value="Submit">
                 </form>
 
+            </div>
+            <div id="message-block" class="hidden">
+                <div id="message">
+                    <p>Письмо отправлено</p>
+                    <p>Тема: <span id="subject-result"></span></p>
+                    <p>Описание: <span id="description-result"></span></p>
+                    <button id="close-btn">Ok</button>
+                </div>
             </div>
             <div class="information">
                 <div class="contact">
@@ -288,6 +292,7 @@
             </div>
         </div>
     </div>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
