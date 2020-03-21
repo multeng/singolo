@@ -1,18 +1,27 @@
-const MENU = document.getElementById('menu');
-const MOBILELEFT = document.querySelector('.phone-left');
-const MOBILERIGHT = document.querySelector('.phone-right');
-const PORTFOLIO = document.querySelector('.container_wrapper');
-const BUTTON = document.getElementById('button-form');
-const CLOSEBUTTON = document.getElementById('close-btn');
-const TAGS = document.querySelector('.tags');
-const SLIDER = document.querySelector('.slider');
+//SCROLL
 
-//MENU
-MENU.addEventListener('click', (event) => {
-    MENU.querySelectorAll('a').forEach(element => element.classList.remove('active'));
-    event.target.classList.add('active');
-});
+document.addEventListener('scroll', onScroll);
+
+function onScroll(event) {
+    const currentPisition = window.scrollY + 300;
+    const paths = document.querySelectorAll('body > div');
+    const links = document.querySelectorAll('#menu a');
+    paths.forEach((element) => {
+        if (element.offsetTop <= currentPisition && (element.offsetTop + element.offsetHeight) > currentPisition) {
+            links.forEach((a) => {
+                a.classList.remove('active-nav');
+                if (element.getAttribute('id') === a.getAttribute('href').substring(1)) {
+                    a.classList.add('active-nav');
+                }
+            });
+        }
+    });
+}
+
 // MOBILE IMAGE
+
+const MOBILELEFT = document.querySelector('.phone-left')
+const MOBILERIGHT = document.querySelector('.phone-right')
 MOBILELEFT.addEventListener('click', () => {
     document.querySelector('.phone-left-image').classList.toggle('img-off');
 });
@@ -20,16 +29,112 @@ MOBILELEFT.addEventListener('click', () => {
 MOBILERIGHT.addEventListener('click', () => {
     document.querySelector('.phone-right-image').classList.toggle('img-off');
 });
+// SLIDER
+
+let items = document.querySelectorAll('.phones');
+let currentItem = 0;
+let isEnable = true;
+
+function hideItem(direction) {
+    isEnable = false;
+    items[currentItem].classList.add(direction);
+    items[currentItem].addEventListener('animationend', function () {
+        this.classList.remove('slide_active', direction)
+    });
+}
+function showItem(direction) {
+    items[currentItem].classList.add('next', direction);
+    items[currentItem].addEventListener('animationend', function () {
+        this.classList.remove('next', direction)
+        this.classList.add('slide_active')
+        isEnable = true;
+    });
+}
+
+function changeCurrentItem(n) {
+    currentItem = (n + items.length) % items.length;
+}
+function previosItem(n) {
+    hideItem('to-right');
+    changeCurrentItem(n - 1);
+    showItem('from-left');
+}
+
+function nextItem(n) {
+    hideItem('to-left');
+    changeCurrentItem(n + 1);
+    showItem('from-right');
+}
+
+document.querySelector('.left-arrow').addEventListener('click', function () {
+    if (isEnable) {
+        previosItem(currentItem);
+    }
+    document.querySelector('.slider').classList.toggle('color-slide');
+})
+document.querySelector('.right-arrow').addEventListener('click', function () {
+    if (isEnable) {
+        nextItem(currentItem);
+    }
+    document.querySelector('.slider').classList.toggle('color-slide');
+})
 // PORTFOLIO
+
+const PORTFOLIO = document.querySelector('.portfolio-images')
+
 PORTFOLIO.addEventListener('click', (event) => {
     PORTFOLIO.querySelectorAll('img').forEach(element => element.classList.remove('bordered'));
-    event.target.classList.add('bordered');
+    if (event.target.classList.contains('portfolio-content')) {
+        event.target.classList.add('bordered');
+    }
 });
-//FORM
-BUTTON.addEventListener('click', (e) => {
-    e.preventDefault();
-    const subject = document.getElementById('subject').value.toString();
-    const description = document.getElementById('description').value.toString();
+// PORTFOLIOSHUFFFLE
+ImagesContent = ["./assets/Images/portfolio/ship.png", "./assets/Images/portfolio/girl.png", "./assets/Images/portfolio/castle.png", "./assets/Images/portfolio/robot.png", "./assets/Images/portfolio/rabbits.png", "./assets/Images/portfolio/green.png",
+    "./assets/Images/portfolio/r2d2.png", "./assets/Images/portfolio/chikens.png", "./assets/Images/portfolio/beast.png", "./assets/Images/portfolio/letter.png", "./assets/Images/portfolio/Yeti.png", "./assets/Images/portfolio/table.png"];
+
+const TAGS = document.querySelector('.tags');
+
+TAGS.addEventListener('click', (event) => {
+    TAGS.querySelectorAll('.tag').forEach(element => element.classList.remove('active-tag'));
+    if (event.target.classList.contains('tag')) {
+        event.target.classList.add('active-tag');
+        removePortfolioImages();
+        addPortfolioImage(generatePortfolioImage(ImagesContent));
+    }
+})
+function removePortfolioImages() {
+    PORTFOLIO.querySelectorAll('.portfolio-image').forEach(element => {
+        element.remove();
+    })
+}
+function makeRandom(a, b) {
+    return Math.random() - 0.5;
+}
+function generatePortfolioImage(imageReferences) {
+    let wrapper = new DocumentFragment();
+    imageReferences.sort(makeRandom);
+    for (let i = 0; i < 12; i++) {
+        let div = document.createElement('div')
+        div.classList.add('portfolio-image');
+        div.insertAdjacentHTML("afterbegin",`<img class="portfolio-content" src=${imageReferences[i]} alt="image">`)
+        wrapper.append(div);
+    }
+    return wrapper;
+}
+function addPortfolioImage(funct) {
+    PORTFOLIO.append(funct);
+}
+
+// MODALWINDOW
+
+const BUTTON = document.getElementById('button-form');
+const CLOSEBUTTON = document.getElementById('close-btn');
+
+
+BUTTON.addEventListener('click', (event) => {
+    event.preventDefault();
+    let subject = document.getElementById('subject').value.toString();
+    let description = document.getElementById('description').value.toString();
     let resultSubj = document.getElementById('subject-result');
     let resultDescription = document.getElementById('description-result');
     if (subject != '') {
@@ -49,57 +154,5 @@ CLOSEBUTTON.addEventListener('click', () => {
     document.getElementById('subject-result').innerText = '';
     document.getElementById('description-result').innerText = '';
     document.getElementById('message-block').classList.add('hidden');
-    document.getElementById('form').reset();
+    document.querySelector('.form').reset();
 });
-// PORTFOLIOSHUFFFLE
-data = ["./assets/images/ship.png", "./assets/images/girl.png", "./assets/images/castle.png", "./assets/images/robot.png", "./assets/images/rabbits.png", "./assets/images/green.png",
-    "./assets/images/r2d2.png", "./assets/images/chikens.png", "./assets/images/beast.png", "./assets/images/letter.png", "./assets/images/Yeti.png", "./assets/images/table.png"];
-
-TAGS.addEventListener('click', (event) => {
-    TAGS.querySelectorAll('p').forEach(element => element.classList.remove('active-tag'));
-    event.target.classList.add('active-tag');
-    PORTFOLIO.innerHTML = ''
-    PORTFOLIO.innerHTML = makeNewPortfolio(data);
-});
-function makeRandom(a, b) {
-    return Math.random() - 0.5;
-}
-
-const makeNewPortfolio = (imageReferences) => {
-    imageReferences.sort(makeRandom);
-    let template = '';
-    imageReferences.forEach(element => {
-        template += `<div class="image"><img src=${element} alt="image"></div>`
-    });
-    return template;
-}
-
-// SLIDER
-let items = document.querySelectorAll('.images-phone');
-let currentItem = 0;
-let isEnable = true;
-
-document.querySelector('.left-button').addEventListener('click', () => {
-    items[currentItem].classList.remove('slide-active');
-    changeCurrentItem(currentItem+1);
-    items[currentItem].classList.add('slide-active');
-    document.querySelector('.slider').classList.toggle('color-slide');
-})
-document.querySelector('.right-button').addEventListener('click', () => {
-    items[currentItem].classList.remove('slide-active');
-    changeCurrentItem(currentItem+1);
-    items[currentItem].classList.add('slide-active');
-    document.querySelector('.slider').classList.toggle('color-slide');
-})
-
-
-
-function changeCurrentItem(n) {
-    currentItem = (n + items.length) % items.length;
-}
-
-
-
-
-
-
