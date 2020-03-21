@@ -89,8 +89,8 @@ PORTFOLIO.addEventListener('click', (event) => {
     }
 });
 // PORTFOLIOSHUFFFLE
-ImagesContent = ["./assets/Images/portfolio/ship.png", "./assets/Images/portfolio/girl.png", "./assets/Images/portfolio/castle.png", "./assets/Images/portfolio/robot.png", "./assets/Images/portfolio/rabbits.png", "./assets/Images/portfolio/green.png",
-    "./assets/Images/portfolio/r2d2.png", "./assets/Images/portfolio/chikens.png", "./assets/Images/portfolio/beast.png", "./assets/Images/portfolio/letter.png", "./assets/Images/portfolio/Yeti.png", "./assets/Images/portfolio/table.png"];
+ImagesContent = ["./assets/images/portfolio/ship.png", "./assets/images/portfolio/girl.png", "./assets/images/portfolio/castle.png", "./assets/images/portfolio/robot.png", "./assets/images/portfolio/rabbits.png", "./assets/images/portfolio/green.png",
+    "./assets/images/portfolio/r2d2.png", "./assets/images/portfolio/chikens.png", "./assets/images/portfolio/beast.png", "./assets/images/portfolio/letter.png", "./assets/images/portfolio/Yeti.png", "./assets/images/portfolio/table.png"];
 
 const TAGS = document.querySelector('.tags');
 
