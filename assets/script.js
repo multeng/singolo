@@ -70,13 +70,13 @@ document.querySelector('.left-arrow').addEventListener('click', function () {
     if (isEnable) {
         previosItem(currentItem);
     }
-    document.querySelector('.slider').classList.toggle('color-slide');
+    document.querySelector('.slider_wrapper').classList.toggle('color-slide');
 })
 document.querySelector('.right-arrow').addEventListener('click', function () {
     if (isEnable) {
         nextItem(currentItem);
     }
-    document.querySelector('.slider').classList.toggle('color-slide');
+    document.querySelector('.slider_wrapper').classList.toggle('color-slide');
 })
 // PORTFOLIO
 
@@ -89,8 +89,8 @@ PORTFOLIO.addEventListener('click', (event) => {
     }
 });
 // PORTFOLIOSHUFFFLE
-ImagesContent = ["./assets/images/portfolio/ship.png", "./assets/images/portfolio/girl.png", "./assets/images/portfolio/castle.png", "./assets/images/portfolio/robot.png", "./assets/images/portfolio/rabbits.png", "./assets/images/portfolio/green.png",
-    "./assets/images/portfolio/r2d2.png", "./assets/images/portfolio/chikens.png", "./assets/images/portfolio/beast.png", "./assets/images/portfolio/letter.png", "./assets/images/portfolio/Yeti.png", "./assets/images/portfolio/table.png"];
+ImagesContent = ["./assets/Images/portfolio/ship.png", "./assets/Images/portfolio/girl.png", "./assets/Images/portfolio/castle.png", "./assets/Images/portfolio/robot.png", "./assets/Images/portfolio/rabbits.png", "./assets/Images/portfolio/green.png",
+    "./assets/Images/portfolio/r2d2.png", "./assets/Images/portfolio/chikens.png", "./assets/Images/portfolio/beast.png", "./assets/Images/portfolio/letter.png", "./assets/Images/portfolio/Yeti.png", "./assets/Images/portfolio/table.png"];
 
 const TAGS = document.querySelector('.tags');
 
@@ -116,7 +116,7 @@ function generatePortfolioImage(imageReferences) {
     for (let i = 0; i < 12; i++) {
         let div = document.createElement('div')
         div.classList.add('portfolio-image');
-        div.insertAdjacentHTML("afterbegin",`<img class="portfolio-content" src=${imageReferences[i]} alt="image">`)
+        div.insertAdjacentHTML("afterbegin", `<img class="portfolio-content" src=${imageReferences[i]} alt="image">`)
         wrapper.append(div);
     }
     return wrapper;
@@ -156,3 +156,15 @@ CLOSEBUTTON.addEventListener('click', () => {
     document.getElementById('message-block').classList.add('hidden');
     document.querySelector('.form').reset();
 });
+
+//NAVIGATION
+
+const HAMBURGER = document.querySelector('.hamburger');
+const MENU = document.getElementById('menu');
+const LOGO = document.querySelector('.logo')
+
+HAMBURGER.addEventListener('click', (event) => {
+    HAMBURGER.classList.toggle('hamburger-active');
+    MENU.classList.toggle('nav-active');
+    LOGO.classList.toggle('logo-active');
+})
