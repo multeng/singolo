@@ -89,8 +89,8 @@ PORTFOLIO.addEventListener('click', (event) => {
     }
 });
 // PORTFOLIOSHUFFFLE
-ImagesContent = ["./assets/Images/portfolio/ship.png", "./assets/Images/portfolio/girl.png", "./assets/Images/portfolio/castle.png", "./assets/Images/portfolio/robot.png", "./assets/Images/portfolio/rabbits.png", "./assets/Images/portfolio/green.png",
-    "./assets/Images/portfolio/r2d2.png", "./assets/Images/portfolio/chikens.png", "./assets/Images/portfolio/beast.png", "./assets/Images/portfolio/letter.png", "./assets/Images/portfolio/Yeti.png", "./assets/Images/portfolio/table.png"];
+ImagesContent = ["./assets/images/portfolio/ship.png", "./assets/images/portfolio/girl.png", "./assets/images/portfolio/castle.png", "./assets/images/portfolio/robot.png", "./assets/images/portfolio/rabbits.png", "./assets/images/portfolio/green.png",
+    "./assets/images/portfolio/r2d2.png", "./assets/images/portfolio/chikens.png", "./assets/images/portfolio/beast.png", "./assets/images/portfolio/letter.png", "./assets/images/portfolio/Yeti.png", "./assets/images/portfolio/table.png"];
 
 const TAGS = document.querySelector('.tags');
 
@@ -137,17 +137,19 @@ BUTTON.addEventListener('click', (event) => {
     let description = document.getElementById('description').value.toString();
     let resultSubj = document.getElementById('subject-result');
     let resultDescription = document.getElementById('description-result');
-    if (subject != '') {
-        resultSubj.innerText = subject;
-    } else {
-        resultSubj.innerText = 'Без темы';
+    if(document.querySelector('.form').checkValidity()){
+        if (subject != '') {
+            resultSubj.innerText = `Тема: ${subject}`;
+        } else {
+            resultSubj.innerText = 'Без темы';
+        }
+        if (description != '') {
+            resultDescription.innerText = `Описание: ${description}`;
+        } else {
+            resultDescription.innerText = 'Без описания';
+        }
+        document.getElementById('message-block').classList.remove('hidden');
     }
-    if (description != '') {
-        resultDescription.innerText = description;
-    } else {
-        resultDescription.innerText = 'Без описания';
-    }
-    document.getElementById('message-block').classList.remove('hidden');
 });
 
 CLOSEBUTTON.addEventListener('click', () => {
@@ -158,7 +160,7 @@ CLOSEBUTTON.addEventListener('click', () => {
 });
 
 //NAVIGATION
-
+const LINKLIST = document.querySelectorAll('#menu a')
 const HAMBURGER = document.querySelector('.hamburger');
 const MENU = document.getElementById('menu');
 const LOGO = document.querySelector('.logo')
@@ -167,4 +169,11 @@ HAMBURGER.addEventListener('click', (event) => {
     HAMBURGER.classList.toggle('hamburger-active');
     MENU.classList.toggle('nav-active');
     LOGO.classList.toggle('logo-active');
+})
+
+LINKLIST.forEach((element) => {
+    element.addEventListener('click',(event) => {
+        MENU.classList.remove('nav-active');
+        LOGO.classList.toggle('logo-active');
+    })
 })
