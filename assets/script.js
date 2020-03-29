@@ -174,6 +174,7 @@ HAMBURGER.addEventListener('click', (event) => {
 LINKLIST.forEach((element) => {
     element.addEventListener('click',(event) => {
         MENU.classList.remove('nav-active');
-        LOGO.classList.toggle('logo-active');
+        LOGO.classList.remove('logo-active');
+        HAMBURGER.classList.toggle('hamburger-active');
     })
 })
